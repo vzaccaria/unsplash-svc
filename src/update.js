@@ -1,5 +1,6 @@
 var promise = require('bluebird')
 var shelljs = require('shelljs')
+var _ = require('lodash')
 
 /**
  * Executes command and returns a promise
@@ -34,6 +35,10 @@ function main() {
   "use strict"
   var dir = process.env.UNSPLASH_DIR
   var time = parseInt(process.env.UNSPLASH_TIME)
+  if (_.isNan(time)) {
+    console.log(JSON.stringify(process.env, 0, 4));
+    time = 10;
+  }
   exec(`${__dirname}/../node_modules/.bin/unsplash desktop -r -p ${dir}`)
   console.log(`Updating Unsplash images in ${dir} every ${time} minutes`);
   interval(parseInt(time * 60 * 1000), () => {

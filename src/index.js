@@ -29,8 +29,8 @@ var getOptions = doc => {
   "use strict"
   var o = docopt(doc)
   var help = getOption('-h', '--help', false, o)
-  var remove = o.remove
-  var install = o.install
+  var remove = o.remove || o.stop
+  var install = o.install || o.start
   var prepare = o.prepare
   var dir = getOption('-d', '--directory', '~/Pictures/Unsplash', o)
   var time = getOption('-t', '--time', 10, o)
