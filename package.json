@@ -1,0 +1,41 @@
+{
+  "name": "unsplash-svc",
+  "version": "0.0.1",
+  "description": "Update your desktop image at a specified time instance",
+  "main": "index.js",
+  "bin": {
+    "unsplash-svc": "./index.js"
+  },
+  "man": "./man/doc.1",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vzaccaria/unsplash-svc.git"
+  },
+  "author": "Vittorio Zaccaria",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/vzaccaria/unsplash-svc/issues"
+  },
+  "homepage": "https://github.com/vzaccaria/unsplash-svc",
+  "dependencies": {
+    "bluebird": "^2.9.14",
+    "debug": "^2.1.3",
+    "docopt": "^0.6.0",
+    "expand-home-dir": "0.0.2",
+    "logdown": "^1.1.1",
+    "node-mac": "^0.1.3",
+    "unsplash-cli": "^1.2.0"
+  },
+  "devDependencies": {
+    "diy-build": "^1.0.8",
+    "babel": "^4.7.16",
+    "shelljs": "*",
+    "xyz": "*",
+    "mocha": "*",
+    "chai": "*",
+    "chai-as-promised": "*",
+    "verb": "*",
+    "verb-cli": "*"
+  }
+}
