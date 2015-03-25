@@ -93,7 +93,7 @@ var main = function () {
   if (prepare) {
     cons.log("");
     cons.log("To prepare the image database, execute this command:");
-    cons.log("**" + __dirname + "/node_modules/.bin/unsplash update**");
+    console.log("" + __dirname + "/node_modules/.bin/unsplash update");
   }
 };
 
