@@ -1,15 +1,15 @@
-var promise = require('bluebird')
+var Promise = require('bluebird')
 var shelljs = require('shelljs')
 var _ = require('lodash')
 
 /**
- * Executes command and returns a promise
+ * Executes command and returns a Promise
  * @param  {string} cmd command to be executed
- * @return {promise}     promised output
+ * @return {Promise}     promised output
  */
 function exec(cmd) {
   "use strict"
-  return new promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     console.log(cmd);
     shelljs.exec(cmd, {
       async: true,
@@ -50,4 +50,4 @@ function main() {
 
 }
 
-main()
+main();

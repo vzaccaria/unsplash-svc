@@ -8,9 +8,11 @@ var docopt = _require.docopt;
 var fs = require("fs");
 var Service = require("node-mac").Service;
 var expandHomeDir = require("expand-home-dir");
-var cons = new require("logdown")({
+var Logdown = require("logdown");
+var cons = new Logdown({
   prefix: ""
 });
+var path = require("path");
 
 var getOptions = function (doc) {
   "use strict";
@@ -26,7 +28,7 @@ var getOptions = function (doc) {
   };
 };
 
-var doc = fs.readFileSync(__dirname + "/docs/usage.md", "utf8");
+var doc = fs.readFileSync(path.join(__dirname, "/docs/usage.md"), "utf8");
 
 var main = function () {
   "use strict";

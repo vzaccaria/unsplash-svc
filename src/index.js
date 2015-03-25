@@ -4,9 +4,11 @@ var {
 var fs = require('fs')
 var Service = require('node-mac').Service
 var expandHomeDir = require('expand-home-dir')
-var cons = new require('logdown')({
+var Logdown = require('logdown')
+var cons = new Logdown({
   prefix: ''
 })
+var path = require('path');
 
 
 var getOptions = doc => {
@@ -23,7 +25,7 @@ var getOptions = doc => {
   }
 }
 
-var doc = fs.readFileSync(__dirname + "/docs/usage.md", 'utf8')
+var doc = fs.readFileSync(path.join(__dirname, "/docs/usage.md"), 'utf8')
 
 var main = () => {
   "use strict"
