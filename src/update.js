@@ -35,7 +35,7 @@ function main() {
   "use strict"
   var dir = process.env.UNSPLASH_DIR
   var time = parseInt(process.env.UNSPLASH_TIME)
-  if (_.isNan(time)) {
+  if (_.isNaN(time)) {
     console.log(JSON.stringify(process.env, 0, 4));
     time = 10;
   }
