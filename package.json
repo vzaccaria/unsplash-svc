@@ -1,6 +1,6 @@
 {
   "name": "unsplash-svc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Update your desktop image at a specified time instance",
   "main": "index.js",
   "bin": {
