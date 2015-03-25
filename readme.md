@@ -23,8 +23,8 @@ Options:
 
 Commands:
     prepare                 prepare system for running the service (do this FIRST!)
-    install                 install the service
-    remove                  remove the service
+    install, start          install the service
+    remove, stop            remove the service
 
 Arguments:
 

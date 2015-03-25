@@ -1,7 +1,6 @@
 var {
   docopt
 } = require('docopt')
-var _ = require('lodash')
 var fs = require('fs')
 var Service = require('node-mac').Service
 var expandHomeDir = require('expand-home-dir')
@@ -10,30 +9,15 @@ var cons = new require('logdown')({
 })
 
 
-var getOption = (a, b, def, o) => {
-  "use strict"
-  if (!_.isUndefined(o[a])) {
-    return o[a]
-  } else {
-    if (!_.isUndefined(o[b])) {
-      return o[b]
-    } else {
-      return def
-    }
-  }
-}
-
-
-
 var getOptions = doc => {
   "use strict"
   var o = docopt(doc)
-  var help = getOption('-h', '--help', false, o)
+  var help = o['--help'] || false
   var remove = o.remove || o.stop
   var install = o.install || o.start
   var prepare = o.prepare
-  var dir = getOption('-d', '--directory', '~/Pictures/Unsplash', o)
-  var time = getOption('-t', '--time', 10, o)
+  var dir = o['--directory'] || '~/Pictures/Unsplash'
+  var time = o['--time'] || 10
   return {
     help, dir, time, remove, install, prepare
   }
@@ -71,7 +55,7 @@ var main = () => {
   })
 
   svc.on('uninstall', () => {
-    cons.log("Unsplash updater uninstalled");
+    cons.log("Unsplash updater stopped");
   })
 
   if (install) {
