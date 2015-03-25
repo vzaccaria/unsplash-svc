@@ -1,7 +1,7 @@
 Usage:
     unsplash-svc prepare
-    unsplash-svc (install | start) [-d DIR] [-t TIME]
-    unsplash-svc (remove | stop)
+    unsplash-svc ( install | start ) [-d DIR] [-t TIME]
+    unsplash-svc ( remove  | stop )
     unsplash-svc ( -h | --help )
 
 Options:
