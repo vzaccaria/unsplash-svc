@@ -40,40 +40,30 @@ What is it
 Updates the Mac Desktop Wallpaper with images from Unsplash. It installs
 an OSX daemon that can be started and stopped from the cli.
 
-Before start everything, run:
-
-    unsplash-svc prepare
-
-and follow the instructions.
-
 By default, it installs pictures in `~/Pictures/Unsplash`. Each picture
 is deleted before downloading the next one.
 
+Instructions
+------------
 
+After you've invoked prepare, to start the service:
 
-### To start
+    > unsplash-svc prepare              # Follow the instructions
+    > sudo unsplash-svc install -t 10   # Updates every 10 minutes
+    > sudo unsplash-svc start
 
-Use option `-t, --time TIME` to specify the time bewteen updates.
+To stop, restart and remove the service, use the appropriate commands.
 
-``` {.bash}
-sudo unsplash-svc install -t 10  # Updates every 10 minutes
-```
+Information about the running daemon
+------------------------------------
 
-note: `sudo` is required for the daemon to run.
+You can query information about the daemon with
 
-### To stop
+    > sudo unsplash-svc info
 
-``` {.bash}
-sudo unsplash-svc remove
-```
+You can also check the daemon's log in `console.app`; look for the entry: 
 
-### Check status
-
-To check status, open `console.app` and check in
-
-```
-/Library/Logs/DiagnosticReports/Unsplash Updater
-```
+    /Library/Logs/DiagnosticReports/Unsplash Updater
 
 
 ## Author
