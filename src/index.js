@@ -15,13 +15,17 @@ var getOptions = doc => {
   "use strict"
   var o = docopt(doc)
   var help = o['--help'] || false
-  var remove = o.remove || o.stop
-  var install = o.install || o.start
+  var restart = o.restart
+  var stop = o.stop
+  var start = o.start
+  var remove = o.remove
+  var install = o.install
+  var info = o.info
   var prepare = o.prepare
   var dir = o['--directory'] || '~/Pictures/Unsplash'
   var time = o['--time'] || 10
   return {
-    help, dir, time, remove, install, prepare
+    help, dir, time, remove, install, prepare, restart, stop, start, info
   }
 }
 
@@ -30,7 +34,7 @@ var doc = fs.readFileSync(path.join(__dirname, "/docs/usage.md"), 'utf8')
 var main = () => {
   "use strict"
   var {
-    dir, time, remove, install, prepare
+    dir, time, remove, install, prepare, start, stop, restart, info
   } = (getOptions(doc))
 
   var svc = new Service({
@@ -53,7 +57,7 @@ var main = () => {
   })
 
   svc.on('install', () => {
-    svc.start()
+    cons.log("Unsplash updater installed");
   })
 
   svc.on('uninstall', () => {
@@ -61,12 +65,35 @@ var main = () => {
   })
 
   if (install) {
-    cons.log("Starting service");
+    cons.log("Installing service");
     svc.install()
   }
 
-  if (remove) {
+  if (start) {
+    cons.log("Starting service");
+    svc.start()
+  }
+
+  if (stop) {
     cons.log("Stopping service");
+    svc.stop()
+  }
+
+  if (restart) {
+    cons.log("Restarting service");
+    svc.restart()
+  }
+
+  if (info) {
+    if (svc.exists) {
+      cons.log(`Process '${svc.name}' runs with id '${svc.id}'`)
+    } else {
+      cons.log("The process does not exist.")
+    }
+  }
+
+  if (remove) {
+    cons.log("Removing service");
     svc.uninstall()
   }
 

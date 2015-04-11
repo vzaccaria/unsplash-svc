@@ -13,6 +13,8 @@ and follow the instructions.
 By default, it installs pictures in `~/Pictures/Unsplash`. Each picture
 is deleted before downloading the next one.
 
+
+
 ### To start
 
 Use option `-t, --time TIME` to specify the time bewteen updates.
@@ -27,4 +29,12 @@ note: `sudo` is required for the daemon to run.
 
 ``` {.bash}
 sudo unsplash-svc remove
+```
+
+### Check status
+
+To check status, open `console.app` and check in
+
+```
+/Library/Logs/DiagnosticReports/Unsplash Updater
 ```

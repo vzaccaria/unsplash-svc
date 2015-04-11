@@ -18,13 +18,17 @@ var getOptions = function (doc) {
   "use strict";
   var o = docopt(doc);
   var help = o["--help"] || false;
-  var remove = o.remove || o.stop;
-  var install = o.install || o.start;
+  var restart = o.restart;
+  var stop = o.stop;
+  var start = o.start;
+  var remove = o.remove;
+  var install = o.install;
+  var info = o.info;
   var prepare = o.prepare;
   var dir = o["--directory"] || "~/Pictures/Unsplash";
   var time = o["--time"] || 10;
   return {
-    help: help, dir: dir, time: time, remove: remove, install: install, prepare: prepare
+    help: help, dir: dir, time: time, remove: remove, install: install, prepare: prepare, restart: restart, stop: stop, start: start, info: info
   };
 };
 
@@ -40,6 +44,10 @@ var main = function () {
   var remove = _getOptions.remove;
   var install = _getOptions.install;
   var prepare = _getOptions.prepare;
+  var start = _getOptions.start;
+  var stop = _getOptions.stop;
+  var restart = _getOptions.restart;
+  var info = _getOptions.info;
 
   var svc = new Service({
     name: "Unsplash Updater",
@@ -61,7 +69,7 @@ var main = function () {
   });
 
   svc.on("install", function () {
-    svc.start();
+    cons.log("Unsplash updater installed");
   });
 
   svc.on("uninstall", function () {
@@ -69,12 +77,35 @@ var main = function () {
   });
 
   if (install) {
-    cons.log("Starting service");
+    cons.log("Installing service");
     svc.install();
   }
 
-  if (remove) {
+  if (start) {
+    cons.log("Starting service");
+    svc.start();
+  }
+
+  if (stop) {
     cons.log("Stopping service");
+    svc.stop();
+  }
+
+  if (restart) {
+    cons.log("Restarting service");
+    svc.restart();
+  }
+
+  if (info) {
+    if (svc.exists) {
+      cons.log("Process '" + svc.name + "' runs with id '" + svc.id + "'");
+    } else {
+      cons.log("The process does not exist.");
+    }
+  }
+
+  if (remove) {
+    cons.log("Removing service");
     svc.uninstall();
   }
 

@@ -1,7 +1,7 @@
 Usage:
     unsplash-svc prepare
-    unsplash-svc ( install | start ) [-d DIR] [-t TIME]
-    unsplash-svc ( remove  | stop )
+    unsplash-svc install [-d DIR] [-t TIME]
+    unsplash-svc ( start | restart | stop | remove | info )
     unsplash-svc ( -h | --help )
 
 Options:
@@ -11,7 +11,11 @@ Options:
 
 Commands:
     prepare                 prepare system for running the service (do this FIRST!)
-    install, start          install the service
-    remove, stop            remove the service
+    install                 install the service
+    start                   start the service
+    restart                 restart the service
+    stop                    stop the service
+    remove                  remove the service
+    info                    information about the service
 
 Arguments:
